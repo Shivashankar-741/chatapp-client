@@ -1,8 +1,7 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import './style.css';
 import profileImg from '../../assets/images/Ellipse 1.png';
-// import { ClosedLoansSVG } from '../../icons';
-import img from '../../assets/icons/chat.svg';
+import { ChatIcon, LogoutIcon, NotificationIcon, SettingsIcon } from '../../icons';
 
 export const Sidebar = (): ReactElement => {
   return (
@@ -13,15 +12,20 @@ export const Sidebar = (): ReactElement => {
         </li>
       </ul>
       <ul className="sidebar__route">
-        <li className="sidebar__route--chat">
-          <img src={img} alt="" />
-          {/* <ClosedLoansSVG> */}
+        <li className="sidebar__route--icon sidebar__route--chat activeClass">
+          <ChatIcon />
         </li>
-        <li className="sidebar__route--notification">notification</li>
-        <li className="sidebar__route--settings">settings</li>
+        <li className="sidebar__route--icon sidebar__route--notification">
+          <NotificationIcon />
+        </li>
+        <li className="sidebar__route--icon sidebar__route--settings">
+          <SettingsIcon />
+        </li>
       </ul>
       <ul className="sidebar__logout">
-        <li className="sidebar__logout--in">logout</li>
+        <li className="sidebar__logout--in">
+          <LogoutIcon />
+        </li>
       </ul>
     </div>
   );

@@ -1,5 +1,5 @@
 .sidebar {
-  width: 8%;
+  width: 120px;
   height: 95vh;
   background-color: #0057ff;
   border-radius: 20px;
@@ -23,4 +23,42 @@
 
 li {
   list-style-type: none;
+  padding: 0;
+}
+
+.sidebar__route--icon {
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.sidebar__route--settings {
+  margin-top: 30px;
+}
+
+.activeClass {
+  background-color: #0044c8;
+  width: 110px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+/* .activeClass::after {
+  content: '';
+  position: relative;
+  left: 32px;
+  bottom: 8px;
+  width: 8px;
+  height: 70px;
+  background-color: yellow;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+} */
+
+.sidebar__logout--in {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
