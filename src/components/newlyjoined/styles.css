@@ -1,0 +1,52 @@
+.newlyjoined {
+  /* width: 540px; */
+  height: 40%;
+  background-color: #ffffff;
+  margin: 15px 30px;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.newlyjoined__title {
+  font-family: 'Poppins-semibold';
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+}
+.newlyJoined__list {
+  /* padding: 10px; */
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid gray;
+}
+
+.newlyJoined__list--left {
+  display: flex;
+}
+
+.newlyJoined__list--left-profile-img {
+  width: 60px;
+  height: 60px;
+}
+
+.newlyJoined__list--left-profile-details {
+  margin-left: 10px;
+}
+.newlyJoined__list--left-profile-details-name {
+  color: #000000;
+  font-family: 'Poppins-semibold';
+  font-size: 18px;
+}
+.newlyJoined__list--left-profile-details-lastmsg {
+  color: #000000 75%;
+  font-family: 'Poppins-medium';
+  font-size: 12px;
+}
+
+.newlyJoined__list--right-lastmsgtime {
+  color: #000000 75%;
+  font-family: 'Poppins-medium';
+  font-size: 12px;
+}

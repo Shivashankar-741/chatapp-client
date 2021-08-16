@@ -12,7 +12,8 @@ export const Sidebar = (): ReactElement => {
         </li>
       </ul>
       <ul className="sidebar__route">
-        <li className="sidebar__route--icon sidebar__route--chat activeClass">
+        <li className="sidebar__route--icon sidebar__route--chat">
+          {/* activeClass */}
           <ChatIcon />
         </li>
         <li className="sidebar__route--icon sidebar__route--notification">

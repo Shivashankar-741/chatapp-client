@@ -6,18 +6,23 @@
 
 body {
   margin: 0;
-  background-color: #DAE7FF;
+  background-color: #dae7ff;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
 
-/* @font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/Gilroy Font/Gilroy-Regular.ttf');
+@font-face {
+  font-family: 'Poppins-semibold';
+  src: url('./assets/fonts/Poppins-SemiBold.otf');
   font-weight: 600;
-} */
+}
+@font-face {
+  font-family: 'Poppins-medium';
+  src: url('./assets/fonts/Poppins-Medium.otf');
+  font-weight: 600;
+}
 
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
