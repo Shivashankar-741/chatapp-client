@@ -19,11 +19,11 @@ export const Chat = () => {
         </div>
       </div>
       <div className="chat__send--msg">
-        <input type="text" className="chat__send--msg-input" placeholder="Type message here" />
+        <input type="text" className="chat__send--msg-input" placeholder="Type a message here" />
       </div>
       <div className="chat__messages">
         <div className="chat__messages--left">
-          <h2>Hey there!</h2>
+          <h2>Hey there! lorem20</h2>
         </div>
         <div className="chat__messages--left">
           <h2>How are you doing?!</h2>
