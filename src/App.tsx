@@ -22,7 +22,7 @@ function App() {
           md={6}
           lg={6}
           xl={6}
-          style={{ backgroundColor: '#ffffff', borderRadius: '20px' }}
+          style={{ backgroundColor: '#ffffff', borderRadius: '20px', position:'relative' }}
         >
           <Chat />
         </Grid>
