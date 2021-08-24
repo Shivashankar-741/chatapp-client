@@ -10,7 +10,7 @@ export const Chat = () => {
       <div className="chat__profile">
         <div className="chat__profile__left">
           <img className="chat__profile__left-img" src={img2} alt="profile" />
-          <h1 className="chat__profile__left-name">Swathi</h1>
+          <h1 className="chat__profile__left-name">Teju</h1>
         </div>
         <div className="chat__profile__right">
           <div className="chat__profile__right-ellipsis">

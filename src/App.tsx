@@ -1,6 +1,7 @@
 import { Grid } from '@material-ui/core';
 import './App.css';
 import { Sidebar, Searchbar, Newlyjoined, Chatlist } from './components';
+import Auth from './components/auth/component';
 import { Chat } from './components/chat/component';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Chat />
         </Grid>
       </Grid>
+      <Auth/>
     </div>
   );
 }
