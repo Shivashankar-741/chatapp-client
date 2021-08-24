@@ -28,7 +28,7 @@ function App() {
           <Chat />
         </Grid>
       </Grid>
-      <Auth/>
+      {/* <Auth/> */}
     </div>
   );
 }
