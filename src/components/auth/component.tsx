@@ -1,24 +1,33 @@
-import { Grid, Button, Container, Paper, Typography } from '@material-ui/core';
-import React, { ReactElement, useState } from 'react';
-import { useStyles } from './styles';
-import AuthInput from './helper';
-// import { useHistory } from 'react-router-dom';
+import { Grid, Button, Container, Paper, Typography } from "@material-ui/core";
+import React, { ReactElement, useState } from "react";
+import { useStyles } from "./styles";
+import AuthInput from "./helper";
+import FileBase from "react-file-base64";
+import { useHistory } from "react-router-dom";
+
+interface IFormData {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  photo: string;
+}
 
 const Auth = (): ReactElement => {
   // const history = useHistory();
   const classes = useStyles();
 
   const initialState = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    photo: "",
   };
 
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState<IFormData>(initialState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,7 +36,6 @@ const Auth = (): ReactElement => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSignup) {
-      alert('please check your password');
       console.log(formData);
     } else {
       console.log(formData);
@@ -51,13 +59,7 @@ const Auth = (): ReactElement => {
           <Grid container spacing={2}>
             {isSignup && (
               <>
-                <AuthInput
-                  name="name"
-                  label="Name"
-                  handleChange={handleChange}
-                  autoFocus
-                  half
-                />
+                <AuthInput name="name" label="Name" handleChange={handleChange} autoFocus half />
                 {/* <AuthInput name="lastName" label="Last Name" handleChange={handleChange} half /> */}
               </>
             )}
@@ -71,7 +73,7 @@ const Auth = (): ReactElement => {
               name="password"
               label="Password"
               handleChange={handleChange}
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
             />
             {isSignup && (
@@ -82,9 +84,18 @@ const Auth = (): ReactElement => {
                 type="password"
               />
             )}
+            {isSignup && (
+              <div className={classes.fileInput}>
+                <FileBase
+                  type="file"
+                  multiple={false}
+                  onDone={({ base64 }: any) => setFormData({ ...formData, photo: base64 })}
+                />
+              </div>
+            )}
           </Grid>
           <Button type="submit" fullWidth variant="contained" className={classes.submit}>
-            {isSignup ? 'Sign Up' : 'Sign In'}
+            {isSignup ? "Sign Up" : "Sign In"}
           </Button>
 
           {isSignup ? (
