@@ -1,29 +1,59 @@
-import { Grid } from '@material-ui/core';
-import React from 'react';
-import './styles.css';
-import img1 from '../../assets/images/Ellipse 2.png';
-import img2 from '../../assets/images/Ellipse 3.png';
+import { Grid } from "@material-ui/core";
+import React, { useEffect } from "react";
+import "./styles.css";
+import img1 from "../../assets/images/Ellipse 2.png";
+import img2 from "../../assets/images/Ellipse 3.png";
+import userImg from "../../assets/images/userimg.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from "src/actions/user";
+import { RootState } from "src/reducers";
+
+interface IUserType {
+  _id: string;
+  name: string;
+  email: string;
+  photo: string;
+  _v: number;
+}
 
 export const Newlyjoined = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("component mounted");
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
+  const users: IUserType[] = useSelector((state: RootState) => state.users);
+
   return (
     <div className="newlyjoined">
       <h1 className="newlyjoined__title">Newly joined</h1>
       <div className="newlyJoined__lists">
-        <div className="newlyJoined__list">
-          <div className="newlyJoined__list--left">
-            <div className="newlyJoined__list--left-profile">
-              <img className="newlyJoined__list--left-profile-img" src={img1} alt="profile" />
+        {users.map((user: IUserType) => (
+          <div className="newlyJoined__list">
+            <div className="newlyJoined__list--left">
+              <div className="newlyJoined__list--left-profile">
+                <img
+                  className="newlyJoined__list--left-profile-img"
+                  src={user.photo || userImg}
+                  alt="profile"
+                />
+              </div>
+              <div className="newlyJoined__list--left-profile-details">
+                <h1 className="newlyJoined__list--left-profile-details-name">{user.name}</h1>
+                <h1 className="newlyJoined__list--left-profile-details-lastmsg">
+                  Hi Guys, Wassup!
+                </h1>
+              </div>
             </div>
-            <div className="newlyJoined__list--left-profile-details">
-              <h1 className="newlyJoined__list--left-profile-details-name">Raghav</h1>
-              <h1 className="newlyJoined__list--left-profile-details-lastmsg">Hi Guys, Wassup!</h1>
+            <div className="newlyJoined__list--right">
+              <h5 className="newlyJoined__list--right-lastmsgtime">Today, 5.35pm</h5>
             </div>
           </div>
-          <div className="newlyJoined__list--right">
-            <h5 className="newlyJoined__list--right-lastmsgtime">Today, 5.35pm</h5>
-          </div>
-        </div>
-        <div className="newlyJoined__list">
+        ))}
+
+        {/* <div className="newlyJoined__list">
           <div className="newlyJoined__list--left">
             <div className="newlyJoined__list--left-profile">
               <img className="newlyJoined__list--left-profile-img" src={img2} alt="profile" />
@@ -37,7 +67,7 @@ export const Newlyjoined = () => {
             <h5 className="newlyJoined__list--right-lastmsgtime">Today, 2.15pm</h5>
           </div>
         </div>
-        {/* <div className="newlyJoined__list">
+        <div className="newlyJoined__list">
           <div className="newlyJoined__list--left">
             <div className="newlyJoined__list--left-profile">
               <img className="newlyJoined__list--left-profile-img" src={img1} alt="profile" />
