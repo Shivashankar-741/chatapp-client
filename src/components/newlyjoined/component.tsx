@@ -1,8 +1,5 @@
-import { Grid } from "@material-ui/core";
 import React, { useEffect } from "react";
 import "./styles.css";
-import img1 from "../../assets/images/Ellipse 2.png";
-import img2 from "../../assets/images/Ellipse 3.png";
 import userImg from "../../assets/images/userimg.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "src/actions/user";
@@ -16,15 +13,18 @@ interface IUserType {
   _v: number;
 }
 
-export const Newlyjoined = () => {
+interface Iuser {
+  userId: string;
+}
+
+export const Newlyjoined = ({ userId }: Iuser) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("component mounted");
-    dispatch(getAllUsers());
-  }, [dispatch]);
+    dispatch(getAllUsers(userId));
+  }, [userId, dispatch]);
 
-  const users: IUserType[] = useSelector((state: RootState) => state.users);
+  let users: IUserType[] = useSelector((state: RootState) => state.users);
 
   return (
     <div className="newlyjoined">

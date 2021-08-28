@@ -11,8 +11,6 @@ interface IUser {
 }
 
 export const Sidebar = ({ setUser, photo }: IUser): ReactElement => {
-  console.log(photo);
-
   const dispatch = useDispatch();
 
   const logout = () => {

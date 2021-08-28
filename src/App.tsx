@@ -5,17 +5,27 @@ import { Sidebar, Searchbar, Newlyjoined, Chatlist } from "./components";
 import Auth from "./components/auth/component";
 import { Chat } from "./components/chat/component";
 
+interface IParsedUser {
+  data: {
+    user: {
+      _id: string;
+      name: string;
+      email: string;
+      photo: string;
+      _v: number;
+    };
+  };
+}
+
 function App() {
   const [user, setUser] = useState(localStorage.getItem("chatapp"));
-  // console.log(user);
 
-  let parsedUser;
+  let parsedUser: IParsedUser | undefined;
   if (user) {
     parsedUser = JSON.parse(user);
   }
 
-  // console.log(parsedUser);
-  // console.log(parsedUser?.status);
+  console.log(parsedUser);
 
   return (
     <div className="App">
@@ -26,7 +36,7 @@ function App() {
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
             <Searchbar />
-            <Newlyjoined />
+            <Newlyjoined userId={parsedUser?.data?.user?._id} />
             <Chatlist />
           </Grid>
           <Grid
