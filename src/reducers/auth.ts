@@ -8,7 +8,6 @@ interface IAction {
 const authReducer = (state = { authData: null }, action: IAction) => {
   switch (action.type) {
     case ActionTypes.AUTH:
-      console.log(action?.data);
       localStorage.setItem("chatapp", JSON.stringify({ ...action?.data }));
       return { ...state, authData: action?.data };
     case ActionTypes.LOGOUT:
