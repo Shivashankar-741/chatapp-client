@@ -14,6 +14,7 @@ interface IParsedUser {
       photo: string;
       _v: number;
     };
+    token: string;
   };
 }
 
@@ -25,14 +26,16 @@ function App() {
     parsedUser = JSON.parse(user);
   }
 
-  console.log(parsedUser);
-
   return (
     <div className="App">
       {parsedUser ? (
         <Grid container>
           <Grid item xs={1}>
-            <Sidebar setUser={setUser} photo={parsedUser?.data?.user?.photo} />
+            <Sidebar
+              token={parsedUser?.data?.token}
+              setUser={setUser}
+              photo={parsedUser?.data?.user?.photo}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
             <Searchbar />

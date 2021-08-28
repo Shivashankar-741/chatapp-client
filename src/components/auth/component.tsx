@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 
 interface IFormData {
   name: string;
+  bio: string;
   email: string;
   password: string;
   passwordConfirm: string;
@@ -22,6 +23,7 @@ const Auth = (): ReactElement => {
 
   const initialState = {
     name: "",
+    bio: "",
     email: "",
     password: "",
     passwordConfirm: "",
@@ -63,7 +65,7 @@ const Auth = (): ReactElement => {
             {isSignup && (
               <>
                 <AuthInput name="name" label="Name" handleChange={handleChange} autoFocus half />
-                {/* <AuthInput name="lastName" label="Last Name" handleChange={handleChange} half /> */}
+                <AuthInput name="bio" label="bio" handleChange={handleChange} half />
               </>
             )}
             <AuthInput

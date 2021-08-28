@@ -4,24 +4,35 @@ import profileImg from "../../assets/images/Ellipse 1.png";
 import { ChatIcon, LogoutIcon, NotificationIcon, SettingsIcon } from "../../icons";
 import { useDispatch } from "react-redux";
 import { ActionTypes } from "src/constants/actionTypes";
+import { useEffect } from "react";
+import userImg from "../../assets/images/userimg.png";
 
 interface IUser {
+  token: string;
   setUser: Dispatch<any>;
   photo: string;
 }
 
-export const Sidebar = ({ setUser, photo }: IUser): ReactElement => {
+export const Sidebar = ({ token, setUser, photo }: IUser): ReactElement => {
   const dispatch = useDispatch();
 
   const logout = () => {
     dispatch({ type: ActionTypes.LOGOUT });
     setUser(null);
   };
+
+  useEffect(() => {
+    if (token) {
+      // conditon for logout the user when token expired
+      // logout()
+    }
+  }, [token]);
+
   return (
     <div className="sidebar">
       <ul className="sidebar__profile">
         <li className="sidebar__profile--pic">
-          <img className="sidebar__profile--pic-img" src={photo || profileImg} alt="profileimg" />
+          <img className="sidebar__profile--pic-img" src={photo || userImg} alt="profileimg" />
         </li>
       </ul>
       <ul className="sidebar__route">

@@ -17,7 +17,8 @@ interface IFormData {
   photo?: string;
 }
 
-export const signUp = (formData: IFormData) => API.post(`/users/signup`, formData);
+export const signUp = (formData: IFormData) =>
+  API.post(`/users/signup`, { ...formData, createdAt: new Date() });
 export const LogIn = (formData: IFormData) => API.post(`/users/login`, formData);
 
 export const getAllUsers = () => API.get(`/users`);

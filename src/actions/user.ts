@@ -4,6 +4,8 @@ import * as api from "../api/index";
 export const getAllUsers = (userId: string) => async (dispatch: any) => {
   try {
     const { data } = await api.getAllUsers();
+    console.log(data);
+
     dispatch({
       type: ActionTypes.FETCH_ALL,
       payload: data.allUsers.filter((user: any) => user._id !== userId),
