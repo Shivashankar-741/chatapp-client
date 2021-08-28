@@ -1,14 +1,29 @@
-import { ReactElement } from 'react';
-import './style.css';
-import profileImg from '../../assets/images/Ellipse 1.png';
-import { ChatIcon, LogoutIcon, NotificationIcon, SettingsIcon } from '../../icons';
+import { Dispatch, ReactElement } from "react";
+import "./style.css";
+import profileImg from "../../assets/images/Ellipse 1.png";
+import { ChatIcon, LogoutIcon, NotificationIcon, SettingsIcon } from "../../icons";
+import { useDispatch } from "react-redux";
+import { ActionTypes } from "src/constants/actionTypes";
 
-export const Sidebar = (): ReactElement => {
+interface IUser {
+  setUser: Dispatch<any>;
+  photo: string;
+}
+
+export const Sidebar = ({ setUser, photo }: IUser): ReactElement => {
+  console.log(photo);
+
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch({ type: ActionTypes.LOGOUT });
+    setUser(null);
+  };
   return (
     <div className="sidebar">
       <ul className="sidebar__profile">
         <li className="sidebar__profile--pic">
-          <img className="sidebar__profile--pic-img" src={profileImg} alt="profileimg" />
+          <img className="sidebar__profile--pic-img" src={photo || profileImg} alt="profileimg" />
         </li>
       </ul>
       <ul className="sidebar__route">
@@ -23,7 +38,7 @@ export const Sidebar = (): ReactElement => {
           <SettingsIcon />
         </li>
       </ul>
-      <ul className="sidebar__logout">
+      <ul className="sidebar__logout" onClick={logout}>
         <li className="sidebar__logout--in">
           <LogoutIcon />
         </li>
