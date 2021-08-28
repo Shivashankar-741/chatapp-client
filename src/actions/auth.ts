@@ -24,8 +24,6 @@ export const login = (formData: IFormData) => async (dispatch: any) => {
 export const signup = (formData: IFormData) => async (dispatch: any) => {
   try {
     const { data } = await api.signUp(formData);
-    console.log(data);
-
     dispatch({ type: ActionTypes.AUTH, data });
     window.location.reload();
   } catch (error) {

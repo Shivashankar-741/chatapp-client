@@ -6,6 +6,7 @@ import { getAllUsers } from "src/actions/user";
 import { RootState } from "src/reducers";
 import { CircularProgress } from "@material-ui/core";
 import moment from "moment";
+import { changeUserTab } from "src/actions/changeUserTab";
 
 interface IUserType {
   _id: string;
@@ -30,7 +31,9 @@ export const Newlyjoined = ({ userId }: IUser) => {
 
   let users: IUserType[] = useSelector((state: RootState) => state.users);
 
-  console.log(users);
+  const clickUser = (user: IUserType) => {
+    dispatch(changeUserTab(user));
+  };
 
   return (
     <div className="newlyjoined">
@@ -38,7 +41,7 @@ export const Newlyjoined = ({ userId }: IUser) => {
       <div className="newlyJoined__lists">
         {!!users.length ? (
           users.map((user: IUserType) => (
-            <div className="newlyJoined__list">
+            <div className="newlyJoined__list" onClick={() => clickUser(user)}>
               <div className="newlyJoined__list--left">
                 <div className="newlyJoined__list--left-profile">
                   <img
@@ -56,7 +59,6 @@ export const Newlyjoined = ({ userId }: IUser) => {
                 <h5 className="newlyJoined__list--right-lastmsgtime">
                   Joined {""}
                   {moment(user.createdAt).fromNow()}
-                  {/* {moment("Sat Aug 28 2021 14:40:30 GMT+0530 (India Standard Time)").fromNow()} */}
                 </h5>
               </div>
             </div>

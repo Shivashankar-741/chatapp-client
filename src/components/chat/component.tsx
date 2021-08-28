@@ -1,16 +1,33 @@
-import React from 'react';
-import './styles.css';
-import img2 from '../../assets/images/Ellipse 33.png';
-import { EllipsisIcon } from '../../icons';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import React from "react";
+import "./styles.css";
+import img2 from "../../assets/images/Ellipse 33.png";
+import { EllipsisIcon } from "../../icons";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import { useSelector } from "react-redux";
+import { RootState } from "src/reducers";
+
+interface IUserType {
+  _id: string;
+  name: string;
+  bio: string;
+  email: string;
+  photo: string;
+  createdAt: string;
+  _v: number;
+}
 
 export const Chat = () => {
+  let user = useSelector((state: RootState) => state.changeUserTab);
+  console.log(user, "from change user tab");
+
+  console.log(user.name);
+
   return (
     <div className="chat">
       <div className="chat__profile">
         <div className="chat__profile__left">
-          <img className="chat__profile__left-img" src={img2} alt="profile" />
-          <h1 className="chat__profile__left-name">Teju</h1>
+          <img className="chat__profile__left-img" src={user.photo || img2} alt="profile" />
+          <h1 className="chat__profile__left-name">{user.name || "Teju"}</h1>
         </div>
         <div className="chat__profile__right">
           <div className="chat__profile__right-ellipsis">
