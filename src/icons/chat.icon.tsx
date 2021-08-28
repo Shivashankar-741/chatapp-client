@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement } from "react";
 
 export const ChatIcon = (): ReactElement => (
   <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +18,7 @@ export const ChatIcon = (): ReactElement => (
         filterUnits="userSpaceOnUse"
         color-interpolation-filters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
