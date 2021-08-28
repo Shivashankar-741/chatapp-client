@@ -4,24 +4,27 @@ import { useStyles } from "./styles";
 import AuthInput from "./helper";
 import FileBase from "react-file-base64";
 import { useHistory } from "react-router-dom";
+import { signup, login } from "../../actions/auth";
+import { useDispatch } from "react-redux";
 
 interface IFormData {
   name: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  passwordConfirm: string;
   photo: string;
 }
 
 const Auth = (): ReactElement => {
   // const history = useHistory();
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const initialState = {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    passwordConfirm: "",
     photo: "",
   };
 
@@ -36,9 +39,9 @@ const Auth = (): ReactElement => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSignup) {
-      console.log(formData);
+      dispatch(signup(formData));
     } else {
-      console.log(formData);
+      dispatch(login(formData));
     }
   };
 
@@ -78,7 +81,7 @@ const Auth = (): ReactElement => {
             />
             {isSignup && (
               <AuthInput
-                name="confirmPassword"
+                name="passwordConfirm"
                 label="Repeat Password"
                 handleChange={handleChange}
                 type="password"
@@ -88,6 +91,7 @@ const Auth = (): ReactElement => {
               <div className={classes.fileInput}>
                 <FileBase
                   type="file"
+                  accept="jpg"
                   multiple={false}
                   onDone={({ base64 }: any) => setFormData({ ...formData, photo: base64 })}
                 />
