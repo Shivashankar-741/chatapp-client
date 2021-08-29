@@ -37,7 +37,7 @@ export const Newlyjoined = ({ userId }: IUser) => {
 
   return (
     <div className="newlyjoined">
-      <h1 className="newlyjoined__title">Newly joined</h1>
+      <h1 className="newlyjoined__title">Chat list</h1>
       <div className="newlyJoined__lists">
         {!!users.length ? (
           users.map((user: IUserType) => (

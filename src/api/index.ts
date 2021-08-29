@@ -17,8 +17,17 @@ interface IFormData {
   photo?: string;
 }
 
+interface IPostMessageType {
+  senderId: string;
+  receiverId: string;
+  message: string;
+}
+
 export const signUp = (formData: IFormData) =>
   API.post(`/users/signup`, { ...formData, createdAt: new Date() });
 export const LogIn = (formData: IFormData) => API.post(`/users/login`, formData);
 
 export const getAllUsers = () => API.get(`/users`);
+
+export const getAllMessages = () => API.get(`/messages`);
+export const postMessageData = (data: IPostMessageType) => API.post(`/messages`, data);

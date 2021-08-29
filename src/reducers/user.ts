@@ -13,7 +13,7 @@ interface IActionType {
 
 const users = (users = [], action: IActionType) => {
   switch (action.type) {
-    case ActionTypes.FETCH_ALL:
+    case ActionTypes.FETCH_ALL_USER:
       return action.payload;
     default:
       return users;

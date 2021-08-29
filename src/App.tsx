@@ -1,9 +1,11 @@
 import { Grid } from "@material-ui/core";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import "./App.css";
 import { Sidebar, Searchbar, Newlyjoined, Chatlist } from "./components";
 import Auth from "./components/auth/component";
 import { Chat } from "./components/chat/component";
+import { RootState } from "./reducers";
 
 interface IParsedUser {
   data: {
@@ -26,6 +28,8 @@ function App() {
     parsedUser = JSON.parse(user);
   }
 
+  let showChatList = useSelector((state: RootState) => state.changeUserTab);
+
   return (
     <div className="App">
       {parsedUser ? (
@@ -40,19 +44,21 @@ function App() {
           <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
             <Searchbar />
             <Newlyjoined userId={parsedUser?.data?.user?._id} />
-            <Chatlist />
+            {/* <Chatlist /> */}
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            xl={6}
-            style={{ backgroundColor: "#ffffff", borderRadius: "20px", position: "relative" }}
-          >
-            <Chat />
-          </Grid>
+          {showChatList._id ? (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              xl={6}
+              style={{ backgroundColor: "#ffffff", borderRadius: "20px", position: "relative" }}
+            >
+              <Chat senderId={parsedUser?.data?.user?._id} />
+            </Grid>
+          ) : null}
         </Grid>
       ) : (
         <Auth />
