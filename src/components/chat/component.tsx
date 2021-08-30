@@ -43,14 +43,18 @@ export const Chat = ({ senderId }: ISenderType) => {
     }
   };
 
-  const returnJsx = (message: IMessageType, senderId: string, receiverId: string): ReactNode => {
+  const renderMessage = (
+    message: IMessageType,
+    senderId: string,
+    receiverId: string
+  ): ReactNode => {
     if (message.senderId === senderId && message.receiverId === receiverId) {
       return (
         <div className="chat__messages--right">
           <h2>{message.message}</h2>
         </div>
       );
-    } else if (message.senderId === receiverId) {
+    } else if (message.senderId === receiverId && message.receiverId === senderId) {
       return (
         <div className="chat__messages--left">
           <h2>{message.message}</h2>
@@ -83,7 +87,7 @@ export const Chat = ({ senderId }: ISenderType) => {
         />
       </div>
       <div className="chat__messages">
-        {messages.map((message) => returnJsx(message, senderId, user._id))}
+        {messages.map((message) => renderMessage(message, senderId, user._id))}
       </div>
     </div>
   );
