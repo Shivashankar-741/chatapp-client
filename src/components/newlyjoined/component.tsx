@@ -15,6 +15,7 @@ interface IUserType {
   email: string;
   photo: string;
   createdAt: string;
+  notFound?: boolean;
   _v: number;
 }
 
@@ -31,6 +32,8 @@ export const Newlyjoined = ({ userId }: IUser) => {
 
   let users: IUserType[] = useSelector((state: RootState) => state.users);
 
+  console.log(users);
+
   const clickUser = (user: IUserType) => {
     dispatch(changeUserTab(user));
   };
@@ -39,7 +42,11 @@ export const Newlyjoined = ({ userId }: IUser) => {
     <div className="newlyjoined">
       <h1 className="newlyjoined__title">Chat list</h1>
       <div className="newlyJoined__lists">
-        {!!users.length ? (
+        {users.length === 1 && users[0].notFound ? (
+          <div>
+            <h1>{users[0].name}</h1>
+          </div>
+        ) : !!users.length ? (
           users.map((user: IUserType) => (
             <div className="newlyJoined__list" onClick={() => clickUser(user)}>
               <div className="newlyJoined__list--left">

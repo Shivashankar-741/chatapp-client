@@ -1,34 +1,34 @@
-import { Grid, TextField } from '@material-ui/core';
-import React from 'react';
-import './styles.css';
+import { Grid } from "@material-ui/core";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { cacheUser, searchUser } from "src/actions/user";
+import "./styles.css";
 
-export const Searchbar = () => {
+interface IUser {
+  userId: string;
+}
+
+export const Searchbar = ({ userId }: IUser) => {
+  const dispatch = useDispatch();
+
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === "") {
+      dispatch(cacheUser());
+    } else {
+      dispatch(searchUser(e.target.value));
+    }
+  };
+
   return (
     <Grid container>
       <Grid item xs={12} sm={12} md={12}>
         <input
+          onChange={changeHandler}
           type="text"
           className="searchbar__input mainLoginInput"
           placeholder="&#61442;       Search"
         />
       </Grid>
     </Grid>
-
-    // <Grid item xs={12} sm={12} md={5}>
-    //   <TextField
-    //     name="firstName"
-    //     // onChange={formik.handleChange}
-    //     variant="outlined"
-    //     required
-    //     fullWidth
-    //     label="First Name"
-    //     type="text"
-    //     className="searchbar__input mainLoginInput"
-    //     // className={classes.outline}
-    //     // value={formik.values.firstName}
-    //     // error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-    //     // helperText={formik.touched.firstName && formik.errors.firstName}
-    //   />
-    // </Grid>
   );
 };

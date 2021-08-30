@@ -13,3 +13,12 @@ export const getAllUsers = (userId: string) => async (dispatch: any) => {
     console.log(error);
   }
 };
+
+export const searchUser = (search: string) => (dispatch: any) => {
+  console.log(search);
+  dispatch({ type: ActionTypes.SEARCH_USER, payload: { search } });
+};
+
+export const cacheUser = () => (dispatch: any) => {
+  dispatch({ type: ActionTypes.CACHE_USER });
+};
