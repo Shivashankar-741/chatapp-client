@@ -30,9 +30,7 @@ export const Newlyjoined = ({ userId }: IUser) => {
     dispatch(getAllUsers(userId));
   }, [userId, dispatch]);
 
-  let users: IUserType[] = useSelector((state: RootState) => state.users);
-
-  console.log(users);
+  const users: IUserType[] = useSelector((state: RootState) => state.users);
 
   const clickUser = (user: IUserType) => {
     dispatch(changeUserTab(user));
@@ -67,6 +65,7 @@ export const Newlyjoined = ({ userId }: IUser) => {
                   Joined {""}
                   {moment(user.createdAt).fromNow()}
                 </h5>
+                {/* <p>2</p> */}
               </div>
             </div>
           ))
