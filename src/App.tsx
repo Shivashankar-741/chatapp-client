@@ -6,9 +6,7 @@ import { Sidebar, Searchbar, Newlyjoined, Chatlist } from "./components";
 import Auth from "./components/auth/component";
 import { Chat } from "./components/chat/component";
 import { RootState } from "./reducers";
-// import dotenv from "dotenv";
-
-// dotenv.config({ path: "../config.env" });
+// import { baseURL } from "src/config/config";
 
 interface IParsedUser {
   data: {
@@ -33,7 +31,7 @@ function App() {
 
   let showChatList = useSelector((state: RootState) => state.changeUserTab);
 
-  // console.log(process.env.BASE_URL);
+  // console.log(baseURL);
 
   return (
     <div className="App">

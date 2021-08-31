@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from "react";
 import "./styles.css";
-import img2 from "../../assets/images/Ellipse 33.png";
+import img2 from "../../assets/images/userimg.png";
 import { EllipsisIcon } from "../../icons";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "src/reducers";
