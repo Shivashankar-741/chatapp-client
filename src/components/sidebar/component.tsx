@@ -1,11 +1,11 @@
-import { Dispatch, ReactElement } from "react";
-import "./style.css";
-import profileImg from "../../assets/images/Ellipse 1.png";
-import { ChatIcon, LogoutIcon, NotificationIcon, SettingsIcon } from "../../icons";
-import { useDispatch } from "react-redux";
-import { ActionTypes } from "src/constants/actionTypes";
-import { useEffect } from "react";
-import userImg from "../../assets/images/userimg.png";
+import { Dispatch, ReactElement } from 'react';
+import './style.css';
+import profileImg from '../../assets/images/Ellipse 1.png';
+import { ChatIcon, LogoutIcon, NotificationIcon, SettingsIcon } from '../../icons';
+import { useDispatch } from 'react-redux';
+import { ActionTypes } from 'src/constants/actionTypes';
+import { useEffect } from 'react';
+import userImg from '../../assets/images/userimg.png';
 
 interface IUser {
   token: string;
@@ -35,18 +35,7 @@ export const Sidebar = ({ token, setUser, photo }: IUser): ReactElement => {
           <img className="sidebar__profile--pic-img" src={photo || userImg} alt="profileimg" />
         </li>
       </ul>
-      <ul className="sidebar__route">
-        <li className="sidebar__route--icon sidebar__route--chat">
-          {/* activeClass */}
-          <ChatIcon />
-        </li>
-        <li className="sidebar__route--icon sidebar__route--notification">
-          <NotificationIcon />
-        </li>
-        <li className="sidebar__route--icon sidebar__route--settings">
-          <SettingsIcon />
-        </li>
-      </ul>
+
       <ul className="sidebar__logout" onClick={logout}>
         <li className="sidebar__logout--in">
           <LogoutIcon />
@@ -55,3 +44,18 @@ export const Sidebar = ({ token, setUser, photo }: IUser): ReactElement => {
     </div>
   );
 };
+
+{
+  /* <ul className="sidebar__route">
+        <li className="sidebar__route--icon sidebar__route--chat activeClass">            
+          <ChatIcon />
+        </li>
+        <li className="sidebar__route--icon sidebar__route--notification">
+          <NotificationIcon />
+        </li>
+        <li className="sidebar__route--icon sidebar__route--settings">
+          <SettingsIcon />
+        </li>
+      </ul> 
+    */
+}

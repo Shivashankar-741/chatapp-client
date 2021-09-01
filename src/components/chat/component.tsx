@@ -1,11 +1,12 @@
-import React, { ReactNode, useEffect } from "react";
-import "./styles.css";
-import img2 from "../../assets/images/userimg.png";
-import { EllipsisIcon } from "../../icons";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "src/reducers";
-import { useState } from "react";
-import { getAllMessages, postMessage } from "src/actions/messages";
+import React, { ReactNode, useEffect } from 'react';
+import './styles.css';
+import img2 from '../../assets/images/userimg.png';
+import { EllipsisIcon } from '../../icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'src/reducers';
+import { useState } from 'react';
+import { getAllMessages, postMessage } from 'src/actions/messages';
+import { postPersonalNotification } from 'src/actions/personalNotifications';
 
 interface ISenderType {
   senderId: string;
@@ -20,12 +21,14 @@ interface IMessageType {
 }
 
 export const Chat = ({ senderId }: ISenderType) => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const dispatch = useDispatch();
 
   let user = useSelector((state: RootState) => state.changeUserTab);
   let messages: IMessageType[] = useSelector((state: RootState) => state.messages);
+  // console.log(user);
+  // console.log(messages);
 
   useEffect(() => {
     dispatch(getAllMessages());
@@ -36,10 +39,16 @@ export const Chat = ({ senderId }: ISenderType) => {
   };
 
   const keyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && message !== "") {
+    if (e.key === 'Enter' && message !== '') {
       console.log(message);
       dispatch(postMessage({ senderId, receiverId: user._id, message }));
-      setMessage("");
+      // dispatch(
+      //   postPersonalNotification({
+      //     notificationSenderId: senderId,
+      //     notificationReceiverId: user._id,
+      //   })
+      // );
+      setMessage('');
     }
   };
 
@@ -68,13 +77,13 @@ export const Chat = ({ senderId }: ISenderType) => {
       <div className="chat__profile">
         <div className="chat__profile__left">
           <img className="chat__profile__left-img" src={user.photo || img2} alt="profile" />
-          <h1 className="chat__profile__left-name">{user.name || "Teju"}</h1>
+          <h1 className="chat__profile__left-name">{user.name || 'Teju'}</h1>
         </div>
-        <div className="chat__profile__right">
+        {/* <div className="chat__profile__right">
           <div className="chat__profile__right-ellipsis">
             <EllipsisIcon />
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="chat__send--msg">
         <input

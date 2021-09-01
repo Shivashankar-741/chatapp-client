@@ -1,11 +1,11 @@
-import { Grid } from "@material-ui/core";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import "./App.css";
-import { Sidebar, Searchbar, Newlyjoined, Chatlist } from "./components";
-import Auth from "./components/auth/component";
-import { Chat } from "./components/chat/component";
-import { RootState } from "./reducers";
+import { Grid } from '@material-ui/core';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import './App.css';
+import { Sidebar, Searchbar, Newlyjoined, Chatlist } from './components';
+import Auth from './components/auth/component';
+import { Chat } from './components/chat/component';
+import { RootState } from './reducers';
 // import { baseURL } from "src/config/config";
 
 interface IParsedUser {
@@ -22,7 +22,7 @@ interface IParsedUser {
 }
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem("chatapp"));
+  const [user, setUser] = useState(localStorage.getItem('chatapp'));
 
   let parsedUser: IParsedUser | undefined;
   if (user) {
@@ -30,8 +30,6 @@ function App() {
   }
 
   let showChatList = useSelector((state: RootState) => state.changeUserTab);
-
-  // console.log(baseURL);
 
   return (
     <div className="App">
@@ -55,9 +53,7 @@ function App() {
               xs={12}
               sm={12}
               md={6}
-              lg={6}
-              xl={6}
-              style={{ backgroundColor: "#ffffff", borderRadius: "20px", position: "relative" }}
+              style={{ backgroundColor: '#ffffff', borderRadius: '20px', position: 'relative' }}
             >
               <Chat senderId={parsedUser?.data?.user?._id} />
             </Grid>
