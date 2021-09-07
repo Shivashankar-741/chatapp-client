@@ -33,7 +33,7 @@ export const Sidebar = ({ token, setUser, photo }: IUser): ReactElement => {
         logout();
       }
     }
-  }, [token]);
+  }, [logout, token]);
 
   return (
     <div className="sidebar">
