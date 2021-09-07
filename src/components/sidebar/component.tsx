@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement } from 'react';
+import { Dispatch, ReactElement, useCallback } from 'react';
 import './style.css';
 import { LogoutIcon } from '../../icons';
 import { useDispatch } from 'react-redux';
@@ -20,10 +20,10 @@ interface IToken {
 export const Sidebar = ({ token, setUser, photo }: IUser): ReactElement => {
   const dispatch = useDispatch();
 
-  const logout = () => {
+  const logout = useCallback(() => {
     dispatch({ type: ActionTypes.LOGOUT });
     setUser(null);
-  };
+  }, [dispatch, setUser]);
 
   useEffect(() => {
     if (token) {
@@ -51,18 +51,3 @@ export const Sidebar = ({ token, setUser, photo }: IUser): ReactElement => {
     </div>
   );
 };
-
-{
-  /* <ul className="sidebar__route">
-        <li className="sidebar__route--icon sidebar__route--chat activeClass">            
-          <ChatIcon />
-        </li>
-        <li className="sidebar__route--icon sidebar__route--notification">
-          <NotificationIcon />
-        </li>
-        <li className="sidebar__route--icon sidebar__route--settings">
-          <SettingsIcon />
-        </li>
-      </ul> 
-    */
-}
