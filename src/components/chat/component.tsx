@@ -25,8 +25,6 @@ export const Chat = ({ senderId }: ISenderType) => {
 
   let user = useSelector((state: RootState) => state.changeUserTab);
   let messages: IMessageType[] = useSelector((state: RootState) => state.messages);
-  // console.log(user);
-  // console.log(messages);
 
   useEffect(() => {
     dispatch(getAllMessages());
@@ -38,7 +36,6 @@ export const Chat = ({ senderId }: ISenderType) => {
 
   const keyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && message !== '') {
-      console.log(message);
       dispatch(postMessage({ senderId, receiverId: user._id, message }));
       // dispatch(
       //   postPersonalNotification({

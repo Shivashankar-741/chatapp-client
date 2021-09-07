@@ -1,5 +1,5 @@
-import { ActionTypes } from "src/constants/actionTypes";
-import * as api from "../api/index";
+import { ActionTypes } from 'src/constants/actionTypes';
+import * as api from '../api/index';
 
 export const getAllUsers = (userId: string) => async (dispatch: any) => {
   try {
@@ -15,7 +15,6 @@ export const getAllUsers = (userId: string) => async (dispatch: any) => {
 };
 
 export const searchUser = (search: string) => (dispatch: any) => {
-  console.log(search);
   dispatch({ type: ActionTypes.SEARCH_USER, payload: { search } });
 };
 

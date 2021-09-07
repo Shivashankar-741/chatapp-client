@@ -23,7 +23,6 @@ export const postPersonalNotification =
   (personalNotification: personalNotification) => async (dispatch: any) => {
     try {
       const { data } = await api.postNotification(personalNotification);
-      console.log(data);
 
       dispatch({
         type: ActionTypes.POST_PERSONAL_NOTIFICATION,
@@ -42,7 +41,6 @@ export const updatePersonalNotification = (id: string) => async (dispatch: any) 
       type: ActionTypes.UPDATE_PERSONAL_NOTIFICATION,
       payload: data.updateNotification,
     });
-    console.log(data);
   } catch (error) {
     console.log(error);
   }

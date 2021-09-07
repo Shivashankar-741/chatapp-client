@@ -4,9 +4,6 @@ import axios from 'axios';
 // const API = axios.create({ baseURL: 'http://localhost:6400/api/v1' });
 const API = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
 
-console.log(process.env.REACT_APP_BASE_URL);
-console.log(process.env.REACT_APP_BASE_URL);
-
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('chatapp')) {
     req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('chatapp') || '').token}`;
