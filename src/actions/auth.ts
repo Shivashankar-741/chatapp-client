@@ -1,6 +1,5 @@
 import { ActionTypes } from '../constants/actionTypes';
 import * as api from '../api/index';
-import { sendError } from 'src/helpers/notification';
 
 interface IFormData {
   name?: string;

@@ -7,10 +7,7 @@ import { RootState } from 'src/reducers';
 import { CircularProgress } from '@material-ui/core';
 import moment from 'moment';
 import { changeUserTab } from 'src/actions/changeUserTab';
-import {
-  getPersonalNotification,
-  updatePersonalNotification,
-} from 'src/actions/personalNotifications';
+import { getPersonalNotification } from 'src/actions/personalNotifications';
 
 interface IUserType {
   _id: string;

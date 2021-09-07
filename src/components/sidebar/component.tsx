@@ -1,16 +1,20 @@
 import { Dispatch, ReactElement } from 'react';
 import './style.css';
-import profileImg from '../../assets/images/Ellipse 1.png';
-import { ChatIcon, LogoutIcon, NotificationIcon, SettingsIcon } from '../../icons';
+import { LogoutIcon } from '../../icons';
 import { useDispatch } from 'react-redux';
 import { ActionTypes } from 'src/constants/actionTypes';
 import { useEffect } from 'react';
 import userImg from '../../assets/images/userimg.png';
+import decode from 'jwt-decode';
 
 interface IUser {
   token: string;
   setUser: Dispatch<any>;
   photo: string;
+}
+
+interface IToken {
+  exp: number;
 }
 
 export const Sidebar = ({ token, setUser, photo }: IUser): ReactElement => {
@@ -24,7 +28,10 @@ export const Sidebar = ({ token, setUser, photo }: IUser): ReactElement => {
   useEffect(() => {
     if (token) {
       // conditon for logout the user when token expired
-      // logout()
+      const decodedToken: IToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
     }
   }, [token]);
 

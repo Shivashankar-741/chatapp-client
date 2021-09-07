@@ -3,7 +3,6 @@ import React, { ReactElement, useState } from 'react';
 import { useStyles } from './styles';
 import AuthInput from './helper';
 import FileBase from 'react-file-base64';
-import { useHistory } from 'react-router-dom';
 import { signup, login } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 

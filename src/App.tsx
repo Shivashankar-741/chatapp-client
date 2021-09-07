@@ -2,7 +2,7 @@ import { Grid } from '@material-ui/core';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import './App.css';
-import { Sidebar, Searchbar, Newlyjoined, Chatlist } from './components';
+import { Sidebar, Searchbar, Newlyjoined } from './components';
 import Auth from './components/auth/component';
 import { Chat } from './components/chat/component';
 import { RootState } from './reducers';

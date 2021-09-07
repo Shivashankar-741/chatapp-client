@@ -1,12 +1,10 @@
 import React, { ReactNode, useEffect } from 'react';
 import './styles.css';
 import img2 from '../../assets/images/userimg.png';
-import { EllipsisIcon } from '../../icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/reducers';
 import { useState } from 'react';
 import { getAllMessages, postMessage } from 'src/actions/messages';
-import { postPersonalNotification } from 'src/actions/personalNotifications';
 
 interface ISenderType {
   senderId: string;
