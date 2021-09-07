@@ -48,13 +48,7 @@ function App() {
             {/* <Chatlist /> */}
           </Grid>
           {showChatList._id ? (
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              style={{ backgroundColor: '#ffffff', borderRadius: '20px', position: 'relative' }}
-            >
+            <Grid item xs={12} sm={12} md={6} className="chat__container">
               <Chat senderId={parsedUser?.data?.user?._id} />
             </Grid>
           ) : null}

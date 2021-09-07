@@ -1,4 +1,28 @@
-.App {
-  padding: 15px 20px;
-  display: flex;
+@media screen and (min-width: 960px) {
+  .App {
+    padding: 15px 20px;
+    display: flex;
+
+    height: 100vh;
+  }
+  .chat__container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    position: relative;
+  }
+}
+@media screen and (max-width: 960px) {
+  .App {
+    padding: 5px;
+    display: flex;
+
+    height: 100vh;
+  }
+
+  .chat__container {
+    margin: 15px 6px !important;
+    background-color: #ffffff;
+    border-radius: 20px;
+    position: relative;
+  }
 }

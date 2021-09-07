@@ -85,6 +85,10 @@ export const Chat = ({ senderId }: ISenderType) => {
           </div>
         </div> */}
       </div>
+
+      <div className="chat__messages">
+        {messages.map((message) => renderMessage(message, senderId, user._id))}
+      </div>
       <div className="chat__send--msg">
         <input
           onKeyPress={keyPressHandler}
@@ -94,9 +98,6 @@ export const Chat = ({ senderId }: ISenderType) => {
           className="chat__send--msg-input"
           placeholder="Type a message here"
         />
-      </div>
-      <div className="chat__messages">
-        {messages.map((message) => renderMessage(message, senderId, user._id))}
       </div>
     </div>
   );

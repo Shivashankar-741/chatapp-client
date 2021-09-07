@@ -1,6 +1,6 @@
 .sidebar {
   /* width: 120px; */
-  height: 95vh;
+  /* height: 95vh;
   background-color: #0057ff;
   border-radius: 20px;
 
@@ -8,7 +8,47 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px 0; */
+
+  /* [theme.breakpoints.up('md')]: {
+    backgroundColor: theme.palette.primary.main,
+  }, */
+}
+
+@media screen and (min-width: 960px) {
+  .sidebar {
+    height: 95vh;
+    background-color: #0057ff;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+}
+@media screen and (max-width: 960px) {
+  .sidebar {
+    /* height: 95vh; */
+    width: 96vw;
+    background-color: #0057ff;
+    border-radius: 20px;
+
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5px;
+    margin: 10px 0px;
+  }
+
+  .sidebar__profile--pic-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }
 
 .sidebar__route {
@@ -17,11 +57,13 @@
   align-items: center;
 }
 
-.sidebar__profile--pic-img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
+@media screen and (min-width: 960px) {
+  .sidebar__profile--pic-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }
 
 li {

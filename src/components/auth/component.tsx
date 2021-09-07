@@ -1,11 +1,11 @@
-import { Grid, Button, Container, Paper, Typography } from "@material-ui/core";
-import React, { ReactElement, useState } from "react";
-import { useStyles } from "./styles";
-import AuthInput from "./helper";
-import FileBase from "react-file-base64";
-import { useHistory } from "react-router-dom";
-import { signup, login } from "../../actions/auth";
-import { useDispatch } from "react-redux";
+import { Grid, Button, Container, Paper, Typography } from '@material-ui/core';
+import React, { ReactElement, useState } from 'react';
+import { useStyles } from './styles';
+import AuthInput from './helper';
+import FileBase from 'react-file-base64';
+import { useHistory } from 'react-router-dom';
+import { signup, login } from '../../actions/auth';
+import { useDispatch } from 'react-redux';
 
 interface IFormData {
   name: string;
@@ -22,12 +22,12 @@ const Auth = (): ReactElement => {
   const dispatch = useDispatch();
 
   const initialState = {
-    name: "",
-    bio: "",
-    email: "",
-    password: "",
-    passwordConfirm: "",
-    photo: "",
+    name: '',
+    bio: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
+    photo: '',
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -41,7 +41,11 @@ const Auth = (): ReactElement => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSignup) {
-      dispatch(signup(formData));
+      if (formData.password === formData.passwordConfirm) {
+        dispatch(signup(formData));
+      } else {
+        alert('Password and repeat password should match');
+      }
     } else {
       dispatch(login(formData));
     }
@@ -57,7 +61,7 @@ const Auth = (): ReactElement => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container className={classes.container} component="main" maxWidth="xs">
       <Paper className={classes.paper}>
         <Typography className={classes.heading}>Welcome to Chatapp</Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
@@ -78,7 +82,7 @@ const Auth = (): ReactElement => {
               name="password"
               label="Password"
               handleChange={handleChange}
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               handleShowPassword={handleShowPassword}
             />
             {isSignup && (
@@ -91,6 +95,7 @@ const Auth = (): ReactElement => {
             )}
             {isSignup && (
               <div className={classes.fileInput}>
+                <h6>select your photo</h6>
                 <FileBase
                   type="file"
                   accept="jpg"
@@ -101,7 +106,7 @@ const Auth = (): ReactElement => {
             )}
           </Grid>
           <Button type="submit" fullWidth variant="contained" className={classes.submit}>
-            {isSignup ? "Sign Up" : "Sign In"}
+            {isSignup ? 'Sign Up' : 'Sign In'}
           </Button>
 
           {isSignup ? (
