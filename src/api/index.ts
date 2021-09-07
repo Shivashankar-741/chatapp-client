@@ -1,10 +1,10 @@
 import axios from 'axios';
 // import { baseURL } from "src/config/config";
 
-const API = axios.create({ baseURL: 'http://localhost:6400/api/v1' });
-// const API = axios.create({ baseURL });
+// const API = axios.create({ baseURL: 'http://localhost:6400/api/v1' });
+const API = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
 
-// console.log(baseURL);
+console.log(process.env.REACT_APP_BASE_URL);
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('chatapp')) {
