@@ -9,6 +9,10 @@
   }
 }
 
+.deleteIcon {
+  cursor: pointer;
+}
+
 .chat__profile {
   display: flex;
   justify-content: space-between;

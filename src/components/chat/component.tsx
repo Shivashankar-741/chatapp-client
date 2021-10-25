@@ -69,7 +69,7 @@ export const Chat = ({ senderId }: ISenderType) => {
       } else {
         return (
           <div className="chat__messages--right">
-            <p onClick={() => deleteHandler(message._id)}>
+            <p className="deleteIcon" onClick={() => deleteHandler(message._id)}>
               <DeleteIcon />
             </p>
             <h2>{message.message}</h2>
