@@ -96,7 +96,7 @@
 .chat__messages--right {
   margin: 15px 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: 12px;
   font-family: 'Poppins-medium';
   background-color: #0057ff;

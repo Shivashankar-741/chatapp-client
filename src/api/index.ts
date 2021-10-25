@@ -1,8 +1,8 @@
 import axios from 'axios';
 // import { baseURL } from "src/config/config";
 
-// const API = axios.create({ baseURL: 'http://localhost:6400/api/v1' });
-const API = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
+const API = axios.create({ baseURL: 'http://localhost:6400/api/v1' });
+// const API = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('chatapp')) {
@@ -38,6 +38,7 @@ export const getAllUsers = () => API.get(`/users`);
 
 export const getAllMessages = () => API.get(`/messages`);
 export const postMessageData = (data: IPostMessageType) => API.post(`/messages`, data);
+export const deleteMessageData = (id: string) => API.delete(`/messages/${id}`);
 
 export const getNotification = () => API.get(`/personalnotifications`);
 export const postNotification = (personalNotification: personalNotification) =>

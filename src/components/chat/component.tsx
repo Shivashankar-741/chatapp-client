@@ -4,7 +4,8 @@ import img2 from '../../assets/images/userimg.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/reducers';
 import { useState } from 'react';
-import { getAllMessages, postMessage } from 'src/actions/messages';
+import { getAllMessages, postMessage, deleteMessage } from 'src/actions/messages';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 interface ISenderType {
   senderId: string;
@@ -16,6 +17,7 @@ interface IMessageType {
   receiverId: string;
   senderId: string;
   _id: string;
+  isDeleted?: boolean;
 }
 
 export const Chat = ({ senderId }: ISenderType) => {
@@ -47,23 +49,47 @@ export const Chat = ({ senderId }: ISenderType) => {
     }
   };
 
+  const deleteHandler = (id: string) => {
+    console.log(id);
+    dispatch(deleteMessage(id));
+  };
+
   const renderMessage = (
     message: IMessageType,
     senderId: string,
     receiverId: string
   ): ReactNode => {
     if (message.senderId === senderId && message.receiverId === receiverId) {
-      return (
-        <div className="chat__messages--right">
-          <h2>{message.message}</h2>
-        </div>
-      );
+      if (message?.isDeleted) {
+        return (
+          <div className="chat__messages--right">
+            <h2>This message has been deleted</h2>
+          </div>
+        );
+      } else {
+        return (
+          <div className="chat__messages--right">
+            <p onClick={() => deleteHandler(message._id)}>
+              <DeleteIcon />
+            </p>
+            <h2>{message.message}</h2>
+          </div>
+        );
+      }
     } else if (message.senderId === receiverId && message.receiverId === senderId) {
-      return (
-        <div className="chat__messages--left">
-          <h2>{message.message}</h2>
-        </div>
-      );
+      if (message?.isDeleted) {
+        return (
+          <div className="chat__messages--right">
+            <h2>This message has been deleted</h2>
+          </div>
+        );
+      } else {
+        return (
+          <div className="chat__messages--left">
+            <h2>{message.message}</h2>
+          </div>
+        );
+      }
     }
   };
 

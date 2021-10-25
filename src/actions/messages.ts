@@ -1,5 +1,5 @@
-import { ActionTypes } from "src/constants/actionTypes";
-import * as api from "../api/index";
+import { ActionTypes } from 'src/constants/actionTypes';
+import * as api from '../api/index';
 
 interface IPostMessageType {
   senderId: string;
@@ -27,6 +27,22 @@ export const postMessage = (message: IPostMessageType) => async (dispatch: any) 
     dispatch({
       type: ActionTypes.POST_MESSAGE,
       payload: data.createMessage,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteMessage = (id: string) => async (dispatch: any) => {
+  console.log('from action');
+
+  try {
+    const { data } = await api.deleteMessageData(id);
+    console.log(data);
+
+    dispatch({
+      type: ActionTypes.FETCH_ALL_MESSAGES,
+      payload: data.message,
     });
   } catch (error) {
     console.log(error);
