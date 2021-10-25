@@ -79,7 +79,7 @@ export const Chat = ({ senderId }: ISenderType) => {
     } else if (message.senderId === receiverId && message.receiverId === senderId) {
       if (message?.isDeleted) {
         return (
-          <div className="chat__messages--right">
+          <div className="chat__messages--left">
             <h2>This message has been deleted</h2>
           </div>
         );
