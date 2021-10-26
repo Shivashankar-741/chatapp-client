@@ -45,6 +45,7 @@
 
 .chat__send--msg {
   display: flex;
+  align-items: center;
   width: 90%;
   position: absolute;
   bottom: 0;
@@ -52,6 +53,17 @@
   padding: 10px 0;
 
   /* border-top: 1px solid rgba(0, 0, 0, 25%); */
+}
+
+.emoji {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.emoji__card {
+  position: relative;
+  bottom: 350px;
+  left: 10px;
 }
 .chat__send--msg-input {
   width: 100%;

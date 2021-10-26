@@ -6,6 +6,8 @@ import { RootState } from 'src/reducers';
 import { useState } from 'react';
 import { getAllMessages, postMessage, deleteMessage } from 'src/actions/messages';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Picker from 'emoji-picker-react';
+import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 
 interface ISenderType {
   senderId: string;
@@ -22,6 +24,19 @@ interface IMessageType {
 
 export const Chat = ({ senderId }: ISenderType) => {
   const [message, setMessage] = useState('');
+  console.log(message);
+
+  const [toggle, setToggle] = useState(false);
+
+  const onEmojiClick = (event: any, emojiObject: any) => {
+    if (message !== '') {
+      console.log('one');
+      setMessage(message + emojiObject.emoji);
+    } else {
+      console.log('two');
+      setMessage(emojiObject.emoji);
+    }
+  };
 
   const dispatch = useDispatch();
 
@@ -63,7 +78,7 @@ export const Chat = ({ senderId }: ISenderType) => {
       if (message?.isDeleted) {
         return (
           <div className="chat__messages--right">
-            <h2>This message has been deleted</h2>
+            <h2>This message was deleted</h2>
           </div>
         );
       } else {
@@ -80,7 +95,7 @@ export const Chat = ({ senderId }: ISenderType) => {
       if (message?.isDeleted) {
         return (
           <div className="chat__messages--left">
-            <h2>This message has been deleted</h2>
+            <h2>This message was deleted</h2>
           </div>
         );
       } else {
@@ -91,6 +106,10 @@ export const Chat = ({ senderId }: ISenderType) => {
         );
       }
     }
+  };
+
+  const toggleEmoji = () => {
+    setToggle((t) => !t);
   };
 
   return (
@@ -119,6 +138,13 @@ export const Chat = ({ senderId }: ISenderType) => {
           className="chat__send--msg-input"
           placeholder="Type a message here"
         />
+        <div className="emoji" onClick={toggleEmoji}>
+          <EmojiEmotionsIcon />
+        </div>
+      </div>
+      <div className="emoji__card">
+        {/* {chosenEmoji ? <span>You chose: {chosenEmoji.emoji}</span> : <span>No emoji Chosen</span>} */}
+        {toggle && <Picker onEmojiClick={onEmojiClick} />}
       </div>
     </div>
   );
